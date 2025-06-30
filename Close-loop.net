@@ -1,0 +1,26 @@
+* E:\my project\ltspice\Close-loop.asc
+M1 N002 N008 N010 0 MyNMOS l=0.4u w=0.8696u
+M2 N010 N009 N007 0 MyNMOS l=0.4u w=0.8696u
+M 0 N011 N011 N014 MyNMOS l=0.5u w=60.375u
+M3 N002 N002 N001 N003 MyPMOS l=0.4u w=2u
+M4 N001 N002 N007 N004 MyPMOS l=0.4u w=2u
+M0 N010 N011 0 N013 MyNMOS l=0.8u w=966u
+I1 0 N011 2µ
+M6 Vout N011 0 N012 NMOS l=0.5u w=210u
+V1 N001 0 1.8
+M5 N001 N007 Vout N005 PMOS l=0.55u w=1.9u
+R1 N008 Vout 1Meg
+R3 0 N008 2Meg
+V2 N009 P001 SINE(0 0.2 100)
+R2 N001 N008 2Meg
+V3 P001 0 0.9
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\lenovo\AppData\Local\LTspice\lib\cmp\standard.mos
+.model MyNMOS NMOS (VTO=0.39 KP=230u LAMBDA=0.08)
+.model MyPMOS PMOS (VTO=-0.37 KP=100u LAMBDA=0.12)
+.model nmos NMOS (VTO=0.39 KP=230u LAMBDA=0.5)
+.model pmos PMOS (VTO=-0.37 KP=100u LAMBDA=0.6)
+.tran 100m
+.backanno
+.end
